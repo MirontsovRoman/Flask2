@@ -14,7 +14,7 @@ def get_author_by_id(author_id):
     author = AuthorModel.query.get(author_id)
     if author is None:
         return f"Author id={author_id} not found", 404
-
+    
     return author.to_dict(), 200
 
 

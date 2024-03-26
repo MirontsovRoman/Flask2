@@ -9,7 +9,7 @@ def quotes():
     # Возвращаем ВСЕ цитаты
     return [quote.to_dict() for quote in quotes]
 
-    
+
 @app.get('/quotes/<int:quote_id>')
 def quote_by_id(quote_id):
     quote = QuoteModel.query.get(quote_id)
@@ -32,7 +32,7 @@ def create_quote(author_id):
     author = AuthorModel.query.get(author_id)
     if author is None:
         return {"Error": f"Author id={author_id} not found"}, 404
-
+    
     quote = QuoteModel(author, quote_data["text"])
     db.session.add(quote)
     db.session.commit()
@@ -58,5 +58,3 @@ def delete_quote(quote_id):
     db.session.delete(quote)
     db.session.commit()
     return {"message": f"Quote with id={quote_id} has deleted"}, 200
-
-
