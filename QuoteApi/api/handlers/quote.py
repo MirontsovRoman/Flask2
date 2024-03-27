@@ -1,13 +1,14 @@
 from api import app, db, request
 from api.models.author import AuthorModel
 from api.models.quote import QuoteModel
+from api.schemas.quote import quote_schema, quotes_schema
 
 
 @app.route('/quotes', methods=["GET"])
 def quotes():
     quotes = QuoteModel.query.all()
     # Возвращаем ВСЕ цитаты
-    return [quote.to_dict() for quote in quotes]
+    return quotes_schema.dump(quotes)
 
 
 @app.get('/quotes/<int:quote_id>')

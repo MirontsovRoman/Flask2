@@ -11,8 +11,8 @@ class AuthorModel(db.Model):
     def __init__(self, name):
         self.name = name
         
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name
-        }
+    # def to_dict(self):
+    #     return {
+    #         "id": self.id,
+    #         "name": self.name
+    #     }
