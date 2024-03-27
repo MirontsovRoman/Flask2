@@ -1,16 +1,43 @@
+from pprint import pprint
+from schema import LearnerSchema
+from author import Learner
 from author import Author
 from schema import AuthorSchema
 
-author = Author("123", "Alex", "alex5@mail.ru")
-author_schema = AuthorSchema()
-result = author_schema.dump(author)
-print(result, type(result))
+# Примеры из практики
 
-authors = [
-    Author("1", "Alex"),
-    Author("1", "Ivan"),
-    Author("1", "Tom")
+# author = Author("123", "Alex", "alex5@mail.ru")
+# author_schema = AuthorSchema()
+# result = author_schema.dump(author)
+# print(result, type(result))
+
+# authors = [
+#     Author("1", "Alex"),
+#     Author("1", "Ivan"),
+#     Author("1", "Tom")
+# ]
+# authors_schema = AuthorSchema(many=True)
+# result = authors_schema.dump(authors)
+# print(result, type(result))
+
+
+# Домашнее задание
+# Один экземпляр
+learner = Learner(1, "Alex", True)
+learner_schema = LearnerSchema()
+result = learner_schema.dump(learner)
+print(result)
+
+# Список экземпляров
+learners = [
+    Learner("1", "Alex", True),
+    Learner("2", "Ivan", False),
+    Learner("3", "Tom", True)
 ]
-authors_schema = AuthorSchema(many=True)
-result = authors_schema.dump(authors)
-print(result, type(result))
+schemas = LearnerSchema(many=True)
+res = schemas.dump(learners)
+pprint(res)
+
+
+
+

@@ -1,37 +1,70 @@
+from schema import LearnerSchema
+from author import Learner
 from author import Author
 from schema import AuthorSchema
+from pprint import pprint
 
-json_data = """
-{
-   "id": 99, 
-   "name": "Ivan",
-   "email": "ivan@mail.ru"
-}
-"""
+# Примеры из практики
 
-schema = AuthorSchema()
-result = schema.loads(json_data)
-print(result)
+# json_data = """
+# {
+#    "id": 99,
+#    "name": "Ivan",
+#    "email": "ivan@mail.ru"
+# }
+# """
+
+# schema = AuthorSchema()
+# result = schema.loads(json_data)
+# print(result)
+
+# json_data = """
+# [
+#    {
+#        "id": 1,
+#        "name": "Alex",
+#        "email": "alex@mail.ru"
+#    },
+#    {
+#        "id": 2,
+#        "name": "Ivan",
+#        "email": "ivan@mail.ru"
+#    },
+#    {
+#        "id": 4,
+#        "name": "Tom",
+#        "email": "tom@mail.ru"
+#    }
+# ]
+# """
+# schemas = AuthorSchema(many=True)
+# result = schemas.loads(json_data)
+# print(result)
+
+
+# Домашнее задание
+
 
 json_data = """
 [
    {
-       "id": 1,
-       "name": "Alex",
-       "email": "alex@mail.ru"
+        "uid": 1,
+        "name": "Alex",
+        "final_test": true
    },
    {
-       "id": 2,
-       "name": "Ivan",
-       "email": "ivan@mail.ru"
+        "uid": 2,
+        "name": "Ivan",
+        "final_test": false
    },
    {
-       "id": 4,
-       "name": "Tom",
-       "email": "tom@mail.ru"
+        "uid": 4,
+        "name": "Tom",
+        "final_test": true
    }
 ]
 """
-schemas = AuthorSchema(many=True)
-result = schemas.loads(json_data)
-print(result)
+# Для работы со списком не забываем указать аргумент <many>(many=True)
+schema = LearnerSchema(many=True)
+result = schema.loads(json_data)
+pprint(result)
